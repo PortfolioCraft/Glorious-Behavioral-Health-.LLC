@@ -7799,7 +7799,7 @@
                                     <hr id="vbid-7fe2fd0e-a63b5cc6" class="element " data-elementtype="DIVIDER" data-variant="divider_variant_1" />
                                     <div id="vbid-32e52381-e3ae98f0" class="element body_preset_3 " data-elementtype="BODY" contenteditable="false">We are pleased to offer video sessions for both new and existing patients.</div>
                                     <div class="buttons">
-                                        <a style="width:inherit" href="#" target="_self">
+                                        <a style="width:inherit" href="contact-us.html" target="_self">
                                             <div id="vbid-0a893e96-bb6f-4610-aff9-e2731508fe37" class="element button_preset_3 " data-elementtype="BUTTON" data-variant="button_variant_4">SCHEDULE YOUR APPOINTMENT!</div>
                                         </a>
                                     </div>
@@ -8690,29 +8690,40 @@
 
 
 
-
-
     <style>
-    .testimonial-slide {
-      background-size: cover;
-      background-position: center;
-      height: 400px; /* Adjust height as needed */
-      color: #fff; /* Text color on the slides */
-    }
-    .carousel-caption {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
-  </style>
+.testimonial-slide {
+  background-size: cover;
+  background-position: center;
+  height: 400px; /* Adjust height as needed */
+  color: #fff; /* Text color on the slides */
+}
 
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 90%; /* Adjust width as needed */
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: normal;
+  text-shadow: 2.5px 2.5px 2.4px rgba(0, 0, 0, 0.5); /* Adjust shadow */
+}
 
+.carousel-inner {
+  position: relative;
+}
 
+@media (max-width: 576px) {
+  .carousel-caption {
+    font-size: 12px; /* Adjust font size for small screens */
+  }
+}
+</style>
 
 <div id="testimonialCarousel" class="carousel slide" data-ride="carousel" data-interval="2800"> <!-- Adjust interval (in milliseconds) as needed -->
-<div class="carousel-inner">
+  <div class="carousel-inner">
     <div class="carousel-item active testimonial-slide" style="background-image: url('https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
       <div class="carousel-caption">
         <div class="slideshow-container__text" style="color: white;font-size: 3em; text-align: center;">"Empowering minds, transforming lives"</div>
@@ -8720,12 +8731,12 @@
     </div>
     <div class="carousel-item testimonial-slide" style="background-image: url('https://images.squarespace-cdn.com/content/v1/61c4da8eb1b30a201b9669f2/1696691175374-MJY4VWB1KS8NU3DE3JK1/Sounds-of-Nature.jpg')">
       <div class="carousel-caption">
-      <div class="slideshow-container__text" style="color: white;font-size: 2.5em; text-align: center;">Great listener and I felt really comfortable telling her what I needed to tell her. <br><br><span>-Eden J</span></div>
+        <div class="slideshow-container__text" style="color: white;font-size: 2.5em; text-align: center;">Great listener and I felt really comfortable telling her what I needed to tell her. <br><br><span>-Eden J</span></div>
       </div>
     </div>
     <div class="carousel-item testimonial-slide" style="background-image: url('images/88.jpg')">
       <div class="carousel-caption">
-      <div class="slideshow-container__text" style="color: white;font-size: 2.5em; text-align: center;">I felt an improvement immediately. Thank you for the help. <br><br><span>-Valencia B</span></div>
+        <div class="slideshow-container__text" style="color: white;font-size: 2.5em; text-align: center;">I felt an improvement immediately. Thank you for the help. <br><br><span>-Valencia B</span></div>
       </div>
     </div>
   </div>
@@ -8742,37 +8753,9 @@
 
 
 
-
-
-  
-  <style>
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-
-.carousel-caption {
-  color: #333;
-  font-size: 15px;
-  padding: 20px; /* Increase padding to space out the text */
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 50%;
-  text-align: left;
-  transform: translate(0, -50%);
-  font-family: "Crimson Text", serif;
-  font-weight: 400;
-  font-style: normal;
-  text-shadow: 2.5px 2.5px 2.4px rgba(0, 0, 0, 0.5); /* Adjust shadow */
-}
-
-    </style>
-
-
-
-
-
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
   .card-container {
   display: flex;
   flex-wrap: wrap;
