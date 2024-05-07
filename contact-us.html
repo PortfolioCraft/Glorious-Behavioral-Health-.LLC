@@ -7354,7 +7354,7 @@
     .input-group > div {
         flex: 0 0 calc(50% - 10px);
     }
-    input[type="text"], input[type="email"], input[type="date"], select, textarea {
+    input[type="text"], input[type="email"], input[type="date"], input[type="tel"], select, textarea {
         width: 100%;
         padding: 12px;
         margin-bottom: 20px;
@@ -7377,9 +7377,11 @@
 </style>
 
 
+<!-- Form -->
 <div class="container">
     <h2>Booking Form</h2>
     <form id="bookingForm" action="#" method="post">
+        <!-- Existing inputs -->
         <div class="input-group">
             <div>
                 <label for="fullName">Full Name:</label>
@@ -7411,29 +7413,47 @@
                 <label for="serviceType">Service:</label>
                 <select id="serviceType" name="serviceType" required>
                     <option value="">Select Service</option>
-                    <option value="Support For Seniors">Support For Seniors</option>
-                    <option value="Bipolar Disorder">Bipolar Disorder</option>
+                    <option value="Geri Psych Care">Geri Psych Care</option>
+                    <option value="Mood Disorder">Bipolar Disorder</option>
                     <option value="Addiction">Addiction</option>
                     <option value="Hollistic Mental Health Support">Hollistic Mental Health Support</option>
                     <option value="Managing Pyschosis">Managing Pyschosis</option>
                     <option value="Anxiety Disorders">Anxiety Disorders</option>
                     <option value="Genesight Testing">Genesight Testing</option>
-                    <!-- Add more service options as needed -->
+                    <option value="Others">Others</option>
                 </select>
+            </div>
+        </div>
+         <!-- New inputs -->
+         <div class="input-group">
+            <div>
+                <label for="clientType">Client Type:</label>
+                <select id="clientType" name="clientType" required>
+                    <option value="">Select Client Type</option>
+                    <option value="New">New Client</option>
+                    <option value="Returning">Returning Client</option>
+                    <option value="Follow-up">Follow-up Client</option>
+                </select>
+            </div>
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
             </div>
         </div>
 
         <label for="reason">Reason for Appointment:</label>
         <textarea id="reason" name="reason" rows="4" required></textarea>
 
+       
+
+        <!-- Submit button -->
         <input type="submit" value="Book Appointment">
     </form>
 </div>
 
 <script src="https://smtpjs.com/v3/smtp.js"></script>
-
 <script type="module">
-    // Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
 
@@ -7465,6 +7485,8 @@ function formSubmit(e) {
     const appointmentDate = document.querySelector('#appointmentDate').value;
     const serviceType = document.querySelector('#serviceType').value;
     const reason = document.querySelector('#reason').value;
+    const clientType = document.querySelector('#clientType').value; // New clientType field
+    const phone = document.querySelector('#phone').value; // New phone field
 
     // Validate date of birth
     const currentDate = new Date();
@@ -7482,14 +7504,14 @@ function formSubmit(e) {
     }
 
     // Send data to Firebase
-    sendDataToFirebase(fullName, email, address, dob, appointmentDate, serviceType, reason);
+    sendDataToFirebase(fullName, email, address, dob, appointmentDate, serviceType, reason, clientType, phone);
 
     // Send email
     sendBooking();
 }
 
 // Function to send data to Firebase
-function sendDataToFirebase(fullName, email, address, dob, appointmentDate, serviceType, reason) {
+function sendDataToFirebase(fullName, email, address, dob, appointmentDate, serviceType, reason, clientType, phone) {
     const database = getDatabase();
     const entryId = generateUniqueId(); // Generate unique ID
 
@@ -7500,7 +7522,9 @@ function sendDataToFirebase(fullName, email, address, dob, appointmentDate, serv
         dob: dob,
         appointmentDate: appointmentDate,
         serviceType: serviceType,
-        reason: reason
+        reason: reason,
+        clientType: clientType,
+        phone: phone // Add phone field
     }).then(() => {
         // Display success message
         alert('Booking submitted successfully!');
@@ -7526,7 +7550,9 @@ function sendBooking() {
         dob: document.querySelector("#dob").value,
         appointmentDate: document.querySelector("#appointmentDate").value,
         serviceType: document.querySelector("#serviceType").value,
-        reason: document.querySelector("#reason").value
+        reason: document.querySelector("#reason").value,
+        clientType: document.querySelector("#clientType").value, // Add clientType field
+        phone: document.querySelector("#phone").value // Add phone field
     };
 
     // Construct email body
@@ -7536,12 +7562,14 @@ function sendBooking() {
         '<b>Date of Birth:</b> ' + fields.dob + '<br>' +
         '<b>Preferred Date:</b> ' + fields.appointmentDate + '<br>' +
         '<b>Service:</b> ' + fields.serviceType + '<br>' +
-        '<b>Reason for Appointment:</b> ' + fields.reason;
+        '<b>Reason for Appointment:</b> ' + fields.reason + '<br>' +
+        '<b>Client Type:</b> ' + fields.clientType + '<br>' + // Add clientType field
+        '<b>Phone:</b> ' + fields.phone; // Add phone field
 
     // Send email using SMTPJS
     Email.send({
         SecureToken: "3e3ceea2-2cb6-460e-bef9-8eda1298071a",
-        To: "intake@gloriousbh.com",
+        To: " Intake@gloriousbh.com",
         From: "almeidadavid123@gmail.com",
         Subject: "New Booking Request",
         Body: body
@@ -7549,19 +7577,7 @@ function sendBooking() {
         message => console.log(message)
     );
 };
-
 </script>
-
-
-
-
-
-
-
-
-
-
-
 
 
                 <menu class="bottom_footer" data-horizontalalign="center" data-sbid="sbid-4ca64286-7670-42af-aa29-aed749ccb05b" id="vbid-e0d0e46c-4cb9-4731-be54-b321829384d4">
